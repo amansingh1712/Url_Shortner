@@ -21,14 +21,17 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/shortUrls", async (req, res) => {
-  const urlExist = await ShortUrl.findOne({ full: req.body.fullUrl });
+  const urlExist = await ShortUrl.findOne({
+    full: req.body.fullUrl,
+    short: req.body.shortUrl,
+  });
 
   if (urlExist) {
     res.redirect("/");
     return;
   }
 
-  await ShortUrl.create({ full: req.body.fullUrl });
+  await ShortUrl.create({ full: req.body.fullUrl, short: req.body.shortUrl });
 
   res.redirect("/");
 });

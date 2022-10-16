@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const shortid = require("shortid");
+
+
+// const short = require("short-uuid");
 const shortUrlSchema = new mongoose.Schema({
   full: {
     type: String,
@@ -9,7 +12,8 @@ const shortUrlSchema = new mongoose.Schema({
   short: {
     type: String,
     required: true,
-    default: () => shortid.generate(),
+    // default: () => shortid.generate(),
+    // default: () => short.generate(),
   },
   clicks: {
     type: Number,
